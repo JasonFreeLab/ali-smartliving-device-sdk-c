@@ -5,7 +5,7 @@
 #include "iotx_dm_internal.h"
 
 static dm_opt_ctx g_dm_opt = {
-    0, 0, 1
+    0, 0, 1, 0
 };
 
 int dm_opt_set(dm_opt_t opt, void *data)

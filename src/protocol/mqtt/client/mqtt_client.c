@@ -1255,7 +1255,8 @@ static int iotx_mc_read_packet(iotx_mc_client_t *c, iotx_time_t *timer, unsigned
     /* 1. read the header byte.  This has the packet type in it */
     left_t = iotx_time_left(timer);
     left_t = (left_t == 0) ? 1 : left_t;
-    if (left_t < 0 || left_t > timeout_ms){
+    // if (left_t < 0 || left_t > timeout_ms){
+    if (left_t > timeout_ms){
 	mqtt_err("left_t=%d %d", left_t, timeout_ms);
         left_t = timeout_ms;
     }
