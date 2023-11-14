@@ -191,7 +191,9 @@ define Relative_TcPath
 ( \
     case $(1) in \
         xtensa-lx106-elf-gcc ) \
-            echo "gcc-xtensa-lx106-linux/main/bin" ;; \
+            echo "bin" ;; \
+		xtensa-esp32s3-elf-gcc ) \
+            echo "bin" ;; \
         arm-none-eabi-gcc ) \
             echo "gcc-arm-none-eabi-linux/main/bin" ;; \
     esac \
@@ -202,7 +204,9 @@ define Gitrepo_TcPath
 ( \
     case $(1) in \
         xtensa-lx106-elf-gcc ) \
-            echo "gcc-xtensa-lx106-linux" ;; \
+            echo "." ;; \
+		xtensa-esp32s3-elf-gcc ) \
+            echo "." ;; \
         arm-none-eabi-gcc ) \
             echo "gcc-arm-none-eabi-linux" ;; \
     esac \

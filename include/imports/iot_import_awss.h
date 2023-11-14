@@ -159,7 +159,7 @@ DLL_HAL_API int HAL_Awss_Close_Ap();
 DLL_HAL_API void HAL_Awss_Switch_Channel(
             _IN_ char primary_channel,
             _IN_OPT_ char secondary_channel,
-            _IN_OPT_ uint8_t bssid[ETH_ALEN]);
+            _IN_OPT_ uint8_t *bssid);
 
 /* auth type */
 enum AWSS_AUTH_TYPE {
@@ -207,11 +207,11 @@ enum AWSS_ENC_TYPE {
  */
 DLL_HAL_API int HAL_Awss_Connect_Ap(
             _IN_ uint32_t connection_timeout_ms,
-            _IN_ char ssid[HAL_MAX_SSID_LEN],
-            _IN_ char passwd[HAL_MAX_PASSWD_LEN],
+            _IN_ char *ssid,
+            _IN_ char *passwd,
             _IN_OPT_ enum AWSS_AUTH_TYPE auth,
             _IN_OPT_ enum AWSS_ENC_TYPE encry,
-            _IN_OPT_ uint8_t bssid[ETH_ALEN],
+            _IN_OPT_ uint8_t *bssid,
             _IN_OPT_ uint8_t channel);
 
 /* 80211 frame type */
@@ -283,7 +283,7 @@ typedef void (*awss_wifi_mgmt_frame_cb_t)(_IN_ uint8_t *buffer, _IN_ int len,
  */
 DLL_HAL_API int HAL_Wifi_Enable_Mgmt_Frame_Filter(
             _IN_ uint32_t filter_mask,
-            _IN_OPT_ uint8_t vendor_oui[3],
+            _IN_OPT_ uint8_t *vendor_oui,
             _IN_ awss_wifi_mgmt_frame_cb_t callback);
 
 typedef struct {
@@ -291,8 +291,8 @@ typedef struct {
     enum AWSS_ENC_TYPE encry;
     uint8_t channel;
     signed char rssi_dbm;
-    char ssid[HAL_MAX_SSID_LEN];
-    uint8_t mac[ETH_ALEN];
+    char *ssid;
+    uint8_t *mac;
 } awss_ap_info_t;
 
 /**
@@ -310,8 +310,8 @@ typedef struct {
  * @note None.
  */
 typedef int (*awss_wifi_scan_result_cb_t)(
-            const char ssid[HAL_MAX_SSID_LEN],
-            const uint8_t bssid[ETH_ALEN],
+            const char *ssid,
+            const uint8_t *bssid,
             enum AWSS_AUTH_TYPE auth,
             enum AWSS_ENC_TYPE encry,
             uint8_t channel, signed char rssi,
@@ -352,9 +352,9 @@ DLL_HAL_API int HAL_Wifi_Scan(awss_wifi_scan_result_cb_t cb);
  *     If the STA dosen't connect AP successfully, HAL should return -1 and not touch the ssid/passwd/bssid buffer.
  */
 DLL_HAL_API int HAL_Wifi_Get_Ap_Info(
-            _OU_ char ssid[HAL_MAX_SSID_LEN],
-            _OU_ char passwd[HAL_MAX_PASSWD_LEN],
-            _OU_ uint8_t bssid[ETH_ALEN]);
+            _OU_ char *ssid,
+            _OU_ char *passwd,
+            _OU_ uint8_t *bssid);
 
 /**
  * @brief   获取`smartconfig`服务的安全等级
