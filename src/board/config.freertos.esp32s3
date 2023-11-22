@@ -1,15 +1,19 @@
 # Warnings-related flags relevant both for C and C++
-COMMON_WARNING_FLAGS = -Wall \
+COMMON_WARNING_FLAGS = \
+	-Wall \
 	-Wno-error=unused-function \
-	-Wno-error=unused-but-set-variable \
 	-Wno-error=unused-variable \
+	-Wno-error=unused-but-set-variable \
 	-Wno-error=deprecated-declarations \
 	-Wextra \
-	-Wno-unused-parameter -Wno-sign-compare
+	-Wno-unused-parameter \
+	-Wno-sign-compare \
+	-Wno-enum-conversion
 
 # Flags which control code generation and dependency generation, both for C and C++
 COMMON_FLAGS = \
-	-ffunction-sections -fdata-sections \
+	-ffunction-sections \
+	-fdata-sections \
 	-fstrict-volatile-bitfields \
 	-mlongcalls \
 	-nostdlib
@@ -22,11 +26,13 @@ OPTIMIZATION_FLAGS = -Os
 endif
 
 # List of flags to pass to C compiler
-CONFIG_ENV_CFLAGS := $(strip \
-	-std=gnu99 \
+CONFIG_ENV_CFLAGS := \
+	$(strip \
+	-std=gnu17 \
 	$(OPTIMIZATION_FLAGS) \
 	$(COMMON_FLAGS) \
-	$(COMMON_WARNING_FLAGS) -Wno-old-style-declaration)
+	$(COMMON_WARNING_FLAGS) \
+	-Wno-old-style-declaration)
 
 CONFIG_src/ref-impl/tls         :=
 CONFIG_src/ref-impl/hal         :=

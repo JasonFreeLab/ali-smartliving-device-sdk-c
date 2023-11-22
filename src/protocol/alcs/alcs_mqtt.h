@@ -45,7 +45,7 @@ typedef struct {
 #define ALCS_MQTT_THING_LAN_PREFIX_RESPONSE_FMT   "{\"id\": \"%d\", \"code\": %d, \"data\": %s}"
 #define ALCS_MQTT_THING_ALCS_SUBDEV_REQUEST       "{\"id\":\"%d\",\"version\":\"1.0\",\"params\":{\"productKey\":\"%.*s\",\"deviceName\":\"%.*s\"},\"method\":\"thing.lan.prefix.get\"}"
 
-#define ALCS_MQTT_TOPIC_MAX_LEN (128)
+#define ALCS_MQTT_TOPIC_MAX_LEN (200)
 
 #define ALCS_MQTT_JSON_KEY_PRODUCT_KEY "productKey"
 #define ALCS_MQTT_JSON_KEY_DEVICE_NAME "deviceName"

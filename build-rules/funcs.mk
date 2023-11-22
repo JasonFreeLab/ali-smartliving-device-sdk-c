@@ -194,6 +194,12 @@ define Relative_TcPath
             echo "bin" ;; \
 		xtensa-esp32s3-elf-gcc ) \
             echo "bin" ;; \
+		xtensa-esp32s2-elf-gcc ) \
+            echo "bin" ;; \
+		xtensa-esp32-elf-gcc ) \
+            echo "bin" ;; \
+		riscv32-esp-elf-gcc ) \
+            echo "bin" ;; \
         arm-none-eabi-gcc ) \
             echo "gcc-arm-none-eabi-linux/main/bin" ;; \
     esac \
@@ -206,6 +212,12 @@ define Gitrepo_TcPath
         xtensa-lx106-elf-gcc ) \
             echo "." ;; \
 		xtensa-esp32s3-elf-gcc ) \
+            echo "." ;; \
+		xtensa-esp32s2-elf-gcc ) \
+            echo "." ;; \
+		xtensa-esp32-elf-gcc ) \
+            echo "." ;; \
+		riscv32-esp-elf-gcc ) \
             echo "." ;; \
         arm-none-eabi-gcc ) \
             echo "gcc-arm-none-eabi-linux" ;; \

@@ -260,7 +260,7 @@ CoAPResource *CoAPResourceByPath_get(CoAPContext *context, const char *path)
 
     HAL_MutexLock(ctx->resource.list_mutex);
     list_for_each_entry(node, &ctx->resource.list, reslist, CoAPResource) {
-        if (node->path == NULL) {
+        if (node->path[0] == '\0') {
             COAP_ERR("node->path is NULL");
             continue;
         }
