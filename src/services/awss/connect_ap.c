@@ -114,7 +114,8 @@ int awss_connect(char ssid[HAL_MAX_SSID_LEN], char passwd[HAL_MAX_PASSWD_LEN], u
 
     /*need to complete the bssid */
     if(bssid_len > 0 && bssid_len < 6 && bssid != NULL) {
-        if(zc_bssid[0] != '\0') {
+        if(zc_bssid != NULL) {
+        // if(zc_bssid[0] != '\0') {
             memcpy(final_bssid, zc_bssid, 6);
         }else {
             has_bssid = 0;
