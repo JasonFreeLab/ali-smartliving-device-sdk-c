@@ -358,7 +358,7 @@ void alcs_init ()
 #endif
     INIT_LIST_HEAD (&resource_cb_head);
 }
-
+#pragma GCC diagnostic ignored "-Warray-bounds"
 void alcs_deinit()
 {
 	resource_cb_item* del_item = NULL;

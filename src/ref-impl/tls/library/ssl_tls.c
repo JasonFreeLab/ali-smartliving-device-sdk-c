@@ -1023,7 +1023,7 @@ void ssl_calc_verify_tls( mbedtls_ssl_context *ssl, unsigned char hash[36] )
 
 #if defined(MBEDTLS_SSL_PROTO_TLS1_2)
 #if defined(MBEDTLS_SHA256_C)
-void ssl_calc_verify_tls_sha256( mbedtls_ssl_context *ssl, unsigned char hash[32] )
+void ssl_calc_verify_tls_sha256( mbedtls_ssl_context *ssl, unsigned char *hash)
 {
     mbedtls_sha256_context sha256;
 

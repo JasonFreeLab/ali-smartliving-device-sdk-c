@@ -289,7 +289,7 @@ void HAL_Awss_Close_Monitor(void)
 void HAL_Awss_Switch_Channel(
             _IN_ char primary_channel,
             _IN_OPT_ char secondary_channel,
-            _IN_OPT_ uint8_t bssid[ETH_ALEN])
+            _IN_OPT_ uint8_t *bssid)
 {
     char cmd[255] = {0};
     int ret = -1;
@@ -321,11 +321,11 @@ void HAL_Awss_Switch_Channel(
  */
 int HAL_Awss_Connect_Ap(
             _IN_ uint32_t connection_timeout_ms,
-            _IN_ char ssid[HAL_MAX_SSID_LEN],
-            _IN_ char passwd[HAL_MAX_PASSWD_LEN],
+            _IN_ char *ssid,
+            _IN_ char *passwd,
             _IN_OPT_ enum AWSS_AUTH_TYPE auth,
             _IN_OPT_ enum AWSS_ENC_TYPE encry,
-            _IN_OPT_ uint8_t bssid[ETH_ALEN],
+            _IN_OPT_ uint8_t *bssid,
             _IN_OPT_ uint8_t channel)
 {
     char buffer[128] = {0};
@@ -500,7 +500,7 @@ int HAL_Wifi_Send_80211_Raw_Frame(_IN_ enum HAL_Awss_Frame_Type type,
  */
 int HAL_Wifi_Enable_Mgmt_Frame_Filter(
             _IN_ uint32_t filter_mask,
-            _IN_OPT_ uint8_t vendor_oui[3],
+            _IN_OPT_ uint8_t *vendor_oui,
             _IN_ awss_wifi_mgmt_frame_cb_t callback)
 {
     return 0;
@@ -554,9 +554,9 @@ static void read_string_from_file(char *dst, const char *file, int dst_max_len)
 
 
 int HAL_Wifi_Get_Ap_Info(
-            _OU_ char ssid[HAL_MAX_SSID_LEN],
-            _OU_ char passwd[HAL_MAX_PASSWD_LEN],
-            _OU_ uint8_t bssid[ETH_ALEN])
+            _OU_ char *ssid,
+            _OU_ char *passwd,
+            _OU_ uint8_t *bssid)
 {
 #define MAXLINE 256
     char buffer[256] = {0};

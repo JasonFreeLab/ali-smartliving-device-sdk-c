@@ -838,6 +838,7 @@ int alcs_resource_unregister_secure(CoAPContext *context, const char *path)
     return COAP_SUCCESS;
 }
 #endif
+#pragma GCC diagnostic ignored "-Warray-bounds"
 void alcs_resource_cb_deinit(void)
 {
     secure_resource_cb_item *del_item = NULL;
